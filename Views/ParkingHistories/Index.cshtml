@@ -1,0 +1,55 @@
+﻿@model IEnumerable<project_asp.net.Models.ParkingHistory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "_AdminLayout";
+}
+<h1>ParkingHistories</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.spot_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.entry_time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.exit_time)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.spot_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reservations.reservation_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.entry_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exit_time)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.history_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.history_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.history_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
